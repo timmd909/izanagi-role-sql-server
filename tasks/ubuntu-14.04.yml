@@ -2,18 +2,21 @@
 # versions of Ubuntu have this already thankfully.
 
 - name: Add MariaDB certificates
-  sudo: yes
+  become: yes
+  become_user: root
   apt_key:
     keyserver: keyserver.ubuntu.com
     id: "0xcbcb082a1bb943db"
     state: present
 
 - name: Add MariaDB repository
-  sudo: yes
+  become: yes
+  become_user: root
   apt_repository:
     repo: 'deb http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu trusty main'
     state: present
 
 - name: Update APT
-  sudo: yes
+  become: yes
+  become_user: root
   apt: update_cache=yes
