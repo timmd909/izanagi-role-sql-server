@@ -1,12 +1,5 @@
 ---
 
-- include: ubuntu-14.04.yml
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'
-
-- name: Install MariaDB
+- include: install.yml
   become: yes
   become_user: root
-  apt: name="{{ item }}" state=present
-  with_items:
-    - mariadb-server
-    - mariadb-client
